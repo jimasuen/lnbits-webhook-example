@@ -61,4 +61,11 @@ Example code in webhook.php to process the webhook data:
     
 
 Note:
+
 If you use https://webhook.site/ in your initial tests, you can skip the step on logging the content to a file.
+
+
+
+#References
+
+1. https://stackoverflow.com/questions/47565321/how-to-get-webhook-response-data
