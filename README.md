@@ -1,5 +1,5 @@
-# lnbits-webhook-example
-Webhook handler example code for LNbits
+# Webhook handler example code for LNbits in PHP
+
 
 Various endpoints in the LNbits API support using webhooks in form of adding a webhook URL in the webhook field. This is an example of using PHP and the create or pay invoice endpoint in the LNbits API (https://legend.lnbits.com/docs#/default/api_payments_create_api_v1_payments_post).
 
@@ -31,12 +31,14 @@ Example code in webhook.php to process the webhook data:
     
         // Check if the json is valid
         if (json_last_error() !== JSON_ERROR_NONE) {
+        
             die(header('HTTP/1.0 415 Unsupported Media Type'));
+            
         } else {
     
             /** Log content to a file to inspect it to see the values of $object. 
              * This would give you the opportunity to see what you want to process. 
-             * Don't forget to comment out or delete the part when you're done.
+             * Don't forget to comment out or delete this part when you're done.
             **/
             
             file_put_contents('object.txt', print_r($object, true));
