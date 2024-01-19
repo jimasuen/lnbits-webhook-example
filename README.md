@@ -5,20 +5,20 @@ Various endpoints in the LNbits API support using webhooks in form of adding a w
 
 Example of adding the webhook URL using cURL (this could be done on the dashboard as well):
 
-    ```
+    
     curl -X 'POST'
     https://your-lnbits-endpoint.com/api/v1/payments
     -H "X-Api-Key: <INVOICE KEY>"
     -H "Content-type: application/json"
     -d '{"out": false, "amount": 1, "memo": "test webhook", "webhook": "https://example.com/webhook.php"}'
-    ```
+    
 
 The value of the webhook field refers to where you have the code that will process the data from the webhook. This example assumes that the code processing the data is found in https://example.com/webhook.php
 
 
 Example code in webhook.php to process the webhook data:
 
-    ```
+    
     <?php
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -50,7 +50,7 @@ Example code in webhook.php to process the webhook data:
     }
     
     ?>
-    ```
+    
 
 Note:
 If you use https://webhook.site/ in your initial tests, you can skip the step on logging the content to a file.
