@@ -1,5 +1,5 @@
 # lnbits-webhook-example
-Webhook example code for LNbits
+Webhook handler example code for LNbits
 
 Various endpoints in the LNbits API support using webhooks in form of adding a webhook URL in the webhook field. This is an example of using PHP and the create or pay invoice endpoint in the LNbits API (https://legend.lnbits.com/docs#/default/api_payments_create_api_v1_payments_post).
 
