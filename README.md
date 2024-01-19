@@ -23,31 +23,35 @@ Example code in webhook.php to process the webhook data:
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    // Webhook json content
-    $json = file_get_contents('php://input'); 
-
-    // Decode the json content and store it in $object
-    $object = json_decode($json);
-
-    // Check if the json is valid
-    if (json_last_error() !== JSON_ERROR_NONE) {
-        die(header('HTTP/1.0 415 Unsupported Media Type'));
-    }
-
-    // Log content to a file to inspect it to see the values of $object. 
-    // This would give you the opportunity to see what you want to process. 
-    // Don't forget to comment out or delete the part when you're done.
-    file_put_contents('object.txt', print_r($object, true));
+        // Webhook json content
+        $json = file_get_contents('php://input'); 
     
-    //In this example, I'm storing the checking_id into a variable.
-    $checking_id = $object->checking_id;
+        // Decode the json content and store it in $object
+        $object = json_decode($json);
     
+        // Check if the json is valid
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            die(header('HTTP/1.0 415 Unsupported Media Type'));
+        } else {
     
-    /**
-    ** From here, you write your code to process the data the way you want
-    **
-    **
-    **/
+            /** Log content to a file to inspect it to see the values of $object. 
+             * This would give you the opportunity to see what you want to process. 
+             * Don't forget to comment out or delete the part when you're done.
+            **/
+            
+            file_put_contents('object.txt', print_r($object, true));
+            
+            //In this example, I'm storing the checking_id into a variable.
+            $checking_id = $object->checking_id;
+            
+            
+            /**
+            ** From here, you write your code to process the data the way you want.
+            **
+            **
+            **/
+    
+        }
     
     }
     
