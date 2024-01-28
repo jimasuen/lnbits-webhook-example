@@ -69,7 +69,7 @@ If you use https://webhook.site/ in your initial tests, you can skip the step on
 
 When using the LNbits pay invoice API to pay an external invoice, the webhook field defaults to `null` despite adding a webhook URL. If you need to send webhook data after paying an external invoice, an approach that can be followed is to use the resulting `payment_hash` that is outputed to check an invoice and send the JSON output to the webhook URL:
 
-Checking the invoice:
+Checking the status of the bolt11 invoice:
 
 ```
 curl -X 'GET'
@@ -86,9 +86,9 @@ Example of sending resulting JSON data to webhook URL:
 curl -X 'POST'
 https://example.com/webhook.php
 -H "Content-type: application/json"
--d {
+-d '{
 <JSON output from checking invoice>
-}
+}'
 ```
 
 
