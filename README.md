@@ -65,6 +65,33 @@ Note:
 If you use https://webhook.site/ in your initial tests, you can skip the step on logging the content to a file.
 
 
+# Webhook data and paying external invoices using the LNbits API
+
+When using the LNbits pay invoice API to pay an external invoice, the webhook field defaults to `null` despite adding a webhook URL. If you need to send webhook data after paying an external invoice, an approach that can be followed is to use the resulting `payment_hash` that is outputed to check an invoice and send the JSON output to the webhook URL:
+
+Checking the invoice:
+
+```
+curl -X 'GET'
+https://your-lnbits-endpoint.com/api/v1/payments/<payment_hash>
+-H "X-Api-Key: <invoice key>"
+-H "Content-type: application/json"
+```
+
+
+
+Example of sending resulting JSON data to webhook URL:
+
+```
+curl -X 'POST'
+https://example.com/webhook.php
+-H "Content-type: application/json"
+-d {
+<JSON output from checking invoice>
+}
+```
+
+
 
 # References
 
